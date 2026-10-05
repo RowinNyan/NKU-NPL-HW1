@@ -1,0 +1,2 @@
+# 划分索引是 pickle 二进制文件，禁止 Git 做换行符转换，避免 Windows 下被破坏
+*.pkl binary

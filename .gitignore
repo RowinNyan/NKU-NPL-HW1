@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 运行产物：分词缓存体积较大，不入库
+cache/
+
+# 预训练词向量压缩包 822MB，超出 GitHub 单文件 100MB 限制，不入库
+glove.6B.zip
+glove.6B/
+# 从 zip 解压出的 GloVe 词向量文本（347MB）及其解析缓存，可由脚本自动重建
+embeddings/
+
+# 课程提供的原始数据（62MB），不入库；clone 后需按 README「数据准备」自行放置
+datasets/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+
+# 作业要求
+作业一要求.md

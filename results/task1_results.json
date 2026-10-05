@@ -1,0 +1,140 @@
+{
+  "task": "task1_bow",
+  "dataset": "datasets/nyt.csv",
+  "n_samples": 11519,
+  "split": {
+    "seed": 42,
+    "train": 9215,
+    "val": 1151,
+    "test": 1153
+  },
+  "tokenizer": {
+    "tool": "nltk.word_tokenize",
+    "lowercase": true
+  },
+  "vocab_size": 127352,
+  "class_names": [
+    "business",
+    "politics",
+    "sports"
+  ],
+  "hyperparameters": {
+    "model": "LogisticRegression",
+    "C": 1.0,
+    "max_iter": 1000
+  },
+  "results": [
+    {
+      "representation": "Binary BoW",
+      "n_features": 127352,
+      "n_train": 9215,
+      "train_seconds": 1.98,
+      "n_iter": 18,
+      "converged": true,
+      "val_accuracy": 0.9800173761946134,
+      "val_macro_f1": 0.9579257090115547,
+      "test_accuracy": 0.986990459670425,
+      "test_macro_f1": 0.9716680713037135,
+      "test_per_class": {
+        "business": {
+          "precision": 0.9769230769230769,
+          "recall": 0.927007299270073,
+          "f1": 0.951310861423221,
+          "support": 137
+        },
+        "politics": {
+          "precision": 0.9493670886075949,
+          "recall": 0.9868421052631579,
+          "f1": 0.967741935483871,
+          "support": 152
+        },
+        "sports": {
+          "precision": 0.9953757225433526,
+          "recall": 0.9965277777777778,
+          "f1": 0.9959514170040485,
+          "support": 864
+        }
+      },
+      "test_confusion_matrix": {
+        "labels": [
+          "business",
+          "politics",
+          "sports"
+        ],
+        "matrix": [
+          [
+            127,
+            7,
+            3
+          ],
+          [
+            1,
+            150,
+            1
+          ],
+          [
+            2,
+            1,
+            861
+          ]
+        ]
+      }
+    },
+    {
+      "representation": "Word Frequency",
+      "n_features": 127352,
+      "n_train": 9215,
+      "train_seconds": 15.53,
+      "n_iter": 141,
+      "converged": true,
+      "val_accuracy": 0.9852302345786272,
+      "val_macro_f1": 0.9676367981694769,
+      "test_accuracy": 0.98959236773634,
+      "test_macro_f1": 0.9751175848880987,
+      "test_per_class": {
+        "business": {
+          "precision": 0.9847328244274809,
+          "recall": 0.9416058394160584,
+          "f1": 0.9626865671641791,
+          "support": 137
+        },
+        "politics": {
+          "precision": 0.9490445859872612,
+          "recall": 0.9802631578947368,
+          "f1": 0.9644012944983819,
+          "support": 152
+        },
+        "sports": {
+          "precision": 0.9976878612716763,
+          "recall": 0.9988425925925926,
+          "f1": 0.9982648930017352,
+          "support": 864
+        }
+      },
+      "test_confusion_matrix": {
+        "labels": [
+          "business",
+          "politics",
+          "sports"
+        ],
+        "matrix": [
+          [
+            129,
+            7,
+            1
+          ],
+          [
+            2,
+            149,
+            1
+          ],
+          [
+            0,
+            1,
+            863
+          ]
+        ]
+      }
+    }
+  ]
+}

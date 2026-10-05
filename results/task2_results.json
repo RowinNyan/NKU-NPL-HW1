@@ -1,0 +1,296 @@
+{
+  "task": "task2_word2vec",
+  "dataset": "datasets/nyt.csv",
+  "n_samples": 11519,
+  "split": {
+    "seed": 42,
+    "train": 9215,
+    "val": 1151,
+    "test": 1153
+  },
+  "tokenizer": {
+    "tool": "nltk.word_tokenize",
+    "lowercase": true
+  },
+  "class_names": [
+    "business",
+    "politics",
+    "sports"
+  ],
+  "document_vector": "mean of in-vocabulary word vectors (OOV skipped)",
+  "hyperparameters": {
+    "model": "LogisticRegression",
+    "C": 1.0,
+    "max_iter": 1000,
+    "word2vec": {
+      "vector_size": 100,
+      "window": 5,
+      "min_count": 5,
+      "sg": 0,
+      "epochs": 5,
+      "negative": 5,
+      "workers": 1,
+      "seed": 42
+    }
+  },
+  "results": [
+    {
+      "representation": "GloVe-6B-100d (pre-trained)",
+      "n_features": 100,
+      "n_train": 9215,
+      "train_seconds": 0.38,
+      "n_iter": 71,
+      "converged": true,
+      "embedding_dim": 100,
+      "embedding_vocab_size": 400000,
+      "token_coverage": 0.9807,
+      "oov_token_ratio": 0.0193,
+      "zero_vector_test_docs": 0,
+      "vectorize_seconds": 5.76,
+      "embedding_source": "glove.6B.zip / glove.6B.100d.txt",
+      "val_accuracy": 0.9748045178105995,
+      "val_macro_f1": 0.9464717041169957,
+      "test_accuracy": 0.981786643538595,
+      "test_macro_f1": 0.9585274047920493,
+      "test_per_class": {
+        "business": {
+          "precision": 0.9465648854961832,
+          "recall": 0.9051094890510949,
+          "f1": 0.9253731343283582,
+          "support": 137
+        },
+        "politics": {
+          "precision": 0.9367088607594937,
+          "recall": 0.9736842105263158,
+          "f1": 0.9548387096774194,
+          "support": 152
+        },
+        "sports": {
+          "precision": 0.9953703703703703,
+          "recall": 0.9953703703703703,
+          "f1": 0.9953703703703703,
+          "support": 864
+        }
+      },
+      "test_confusion_matrix": {
+        "labels": [
+          "business",
+          "politics",
+          "sports"
+        ],
+        "matrix": [
+          [
+            124,
+            9,
+            4
+          ],
+          [
+            4,
+            148,
+            0
+          ],
+          [
+            3,
+            1,
+            860
+          ]
+        ]
+      }
+    },
+    {
+      "representation": "Word2Vec-100d (AG News)",
+      "n_features": 100,
+      "n_train": 9215,
+      "train_seconds": 0.32,
+      "n_iter": 35,
+      "converged": true,
+      "embedding_dim": 100,
+      "embedding_vocab_size": 25376,
+      "token_coverage": 0.9425,
+      "oov_token_ratio": 0.0575,
+      "zero_vector_test_docs": 0,
+      "vectorize_seconds": 4.6,
+      "embedding_source": "自训于 datasets/ag.csv",
+      "w2v_train_docs": 90000,
+      "w2v_train_tokens": 4051013,
+      "val_accuracy": 0.9713292788879235,
+      "val_macro_f1": 0.9417773728650722,
+      "test_accuracy": 0.9809193408499567,
+      "test_macro_f1": 0.9553121501859517,
+      "test_per_class": {
+        "business": {
+          "precision": 0.9393939393939394,
+          "recall": 0.9051094890510949,
+          "f1": 0.9219330855018587,
+          "support": 137
+        },
+        "politics": {
+          "precision": 0.9358974358974359,
+          "recall": 0.9605263157894737,
+          "f1": 0.948051948051948,
+          "support": 152
+        },
+        "sports": {
+          "precision": 0.9953757225433526,
+          "recall": 0.9965277777777778,
+          "f1": 0.9959514170040485,
+          "support": 864
+        }
+      },
+      "test_confusion_matrix": {
+        "labels": [
+          "business",
+          "politics",
+          "sports"
+        ],
+        "matrix": [
+          [
+            124,
+            9,
+            4
+          ],
+          [
+            6,
+            146,
+            0
+          ],
+          [
+            2,
+            1,
+            861
+          ]
+        ]
+      }
+    },
+    {
+      "representation": "Word2Vec-100d (NYT train split)",
+      "n_features": 100,
+      "n_train": 9215,
+      "train_seconds": 0.24,
+      "n_iter": 45,
+      "converged": true,
+      "embedding_dim": 100,
+      "embedding_vocab_size": 31574,
+      "token_coverage": 0.9787,
+      "oov_token_ratio": 0.0213,
+      "zero_vector_test_docs": 0,
+      "vectorize_seconds": 3.47,
+      "embedding_source": "自训于 NYT（NYT train split）",
+      "w2v_train_docs": 9215,
+      "w2v_train_tokens": 6734438,
+      "val_accuracy": 0.9730668983492615,
+      "val_macro_f1": 0.9434601500267359,
+      "test_accuracy": 0.9852558542931483,
+      "test_macro_f1": 0.9632943352692888,
+      "test_per_class": {
+        "business": {
+          "precision": 0.9689922480620154,
+          "recall": 0.9124087591240876,
+          "f1": 0.9398496240601504,
+          "support": 137
+        },
+        "politics": {
+          "precision": 0.9308176100628931,
+          "recall": 0.9736842105263158,
+          "f1": 0.9517684887459807,
+          "support": 152
+        },
+        "sports": {
+          "precision": 0.9976878612716763,
+          "recall": 0.9988425925925926,
+          "f1": 0.9982648930017352,
+          "support": 864
+        }
+      },
+      "test_confusion_matrix": {
+        "labels": [
+          "business",
+          "politics",
+          "sports"
+        ],
+        "matrix": [
+          [
+            125,
+            10,
+            2
+          ],
+          [
+            4,
+            148,
+            0
+          ],
+          [
+            0,
+            1,
+            863
+          ]
+        ]
+      }
+    },
+    {
+      "representation": "Word2Vec-100d (NYT full)",
+      "n_features": 100,
+      "n_train": 9215,
+      "train_seconds": 0.23,
+      "n_iter": 37,
+      "converged": true,
+      "embedding_dim": 100,
+      "embedding_vocab_size": 35447,
+      "token_coverage": 0.9815,
+      "oov_token_ratio": 0.0185,
+      "zero_vector_test_docs": 0,
+      "vectorize_seconds": 5.35,
+      "embedding_source": "自训于 NYT（NYT full）",
+      "w2v_train_docs": 11519,
+      "w2v_train_tokens": 8413087,
+      "val_accuracy": 0.9791485664639444,
+      "val_macro_f1": 0.9583272127456763,
+      "test_accuracy": 0.9861231569817867,
+      "test_macro_f1": 0.9675993838739131,
+      "test_per_class": {
+        "business": {
+          "precision": 0.9694656488549618,
+          "recall": 0.927007299270073,
+          "f1": 0.9477611940298507,
+          "support": 137
+        },
+        "politics": {
+          "precision": 0.9426751592356688,
+          "recall": 0.9736842105263158,
+          "f1": 0.9579288025889967,
+          "support": 152
+        },
+        "sports": {
+          "precision": 0.9965317919075144,
+          "recall": 0.9976851851851852,
+          "f1": 0.9971081550028918,
+          "support": 864
+        }
+      },
+      "test_confusion_matrix": {
+        "labels": [
+          "business",
+          "politics",
+          "sports"
+        ],
+        "matrix": [
+          [
+            127,
+            8,
+            2
+          ],
+          [
+            3,
+            148,
+            1
+          ],
+          [
+            1,
+            1,
+            862
+          ]
+        ]
+      }
+    }
+  ]
+}
