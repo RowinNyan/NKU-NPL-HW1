@@ -32,10 +32,6 @@ HW-1/
 
 ## 环境准备
 
-> 本机全局 Python 环境存在依赖冲突（numpy 2.x 与旧版 scipy / nltk 混装，
-> nltk 报 "numpy.dtype size changed" 二进制不兼容），因此本项目使用
-> **项目内独立虚拟环境**，不修改系统环境。
-
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
@@ -48,14 +44,6 @@ Task 3 需要 CUDA 版 torch（约 2.5 GB），单独从 PyTorch 官方源安装
 .\.venv\Scripts\python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cu124
 ```
 
-> **网络说明**：本机 `huggingface.co` 不可达，`task3_bert.py` 已在导入 transformers 之前
-> 自动设置 `HF_ENDPOINT=https://hf-mirror.com`，模型权重会从镜像下载，无需手动配置。
->
-> **注意**：项目里的 `datasets/` 数据目录与 HuggingFace 的 `datasets` 包同名。
-> 由于该目录没有 `__init__.py`，Python 会把它当作 namespace package 而让位于
-> `site-packages` 里的同名正式包（PEP 420），因此 `requirements.txt` 中保留了
-> `datasets` 依赖以消除歧义。
-
 自检依赖是否就绪：
 
 ```powershell
@@ -64,7 +52,7 @@ Task 3 需要 CUDA 版 torch（约 2.5 GB），单独从 PyTorch 官方源安装
 
 ### 数据准备
 
-课程提供的原始数据**不入库**（62 MB），clone 后需要自行放到 `datasets/` 目录下：
+课程提供的原始数据未入库，clone 后需要自行放到 `datasets/` 目录下：
 
 ```
 datasets/
@@ -428,8 +416,7 @@ Macro-F1，说明 NYT 沿用路透社体例、**导语高度浓缩主题**，开
 
 - `datasets/` 下文件为课程提供，脚本只读不写；该目录已在 `.gitignore` 中排除，
   不入库（见「数据准备」）。
-- `glove.6B.zip`（822 MB）超过 GitHub 单文件 100 MB 限制，已在 `.gitignore` 中排除，
-  仓库中请勿提交该文件。
+- `glove.6B.zip`（822 MB）超过 GitHub 单文件 100 MB 限制，已在 `.gitignore` 中排除。
 - `embeddings/`（解压出的 GloVe 文本 347 MB + 解析缓存 153 MB）同样已忽略，
   运行 `task2_word2vec.py` 会自动从 zip 重建，无需手动准备。
 - BERT 权重缓存在 `~/.cache/huggingface/`（约 440 MB），不在仓库内。
